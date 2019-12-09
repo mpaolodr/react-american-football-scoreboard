@@ -46,8 +46,8 @@ function App() {
     <div className="container">
       <section className="scoreboard">
         <TopRow
-          homeName="Chiefs"
-          awayName="Patriots"
+          homeName="Home"
+          awayName="Away"
           minutes="12"
           seconds="00"
           homeScore={homeScore}
