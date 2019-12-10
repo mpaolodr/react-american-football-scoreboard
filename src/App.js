@@ -5,14 +5,16 @@ import BottomRow from "./BottomRow";
 import TopRow from "./TopRow";
 import HomeButtons from "./HomeButtons";
 import AwayButtons from "./AwayButtons";
-import Change from "./changeQuarter";
+import Change from "./ChangeQuarter";
 
 function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
-  //LIONS
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
   const [quarter, setQuarter] = useState(1);
+  //for stretch
+  // let [homeTeam, setHomeTeam] = useState("Home");
+  // let [awayTeam, setAwayTeam] = useState("Away");
 
   const home = e => {
     if (e.target.className === "homeButtons__touchdown") {
@@ -22,8 +24,6 @@ function App() {
     }
   };
 
-  //HANDLER TO INCREASE SCORE MANUALLY
-
   const away = e => {
     if (e.target.className === "awayButtons__touchdown") {
       setAwayScore(awayScore + 7);
@@ -31,6 +31,17 @@ function App() {
       setAwayScore(awayScore + 3);
     }
   };
+
+  //Handler stretch
+  // const home = (team, amount) => {
+  //   setHomeTeam((homeTeam = team));
+  //   setHomeScore(homeScore + amount);
+  // };
+
+  // const away = (team, amount) => {
+  //   setAwayTeam((awayTeam = team));
+  //   setAwayScore(awayScore + amount);
+  // };
 
   //TO CHANGE QUARTERS
 
@@ -46,8 +57,8 @@ function App() {
     <div className="container">
       <section className="scoreboard">
         <TopRow
-          homeName="Home"
-          awayName="Away"
+          homeTeam="Home"
+          awayTeam="Away"
           minutes="12"
           seconds="00"
           homeScore={homeScore}
@@ -56,8 +67,8 @@ function App() {
         <BottomRow quarter={quarter} />
       </section>
       <section className="buttons">
-        <HomeButtons func={home} />
-        <AwayButtons func={away} />
+        <HomeButtons home={home} />
+        <AwayButtons away={away} />
         <Change changeQuarter={changeQuarter} onClick={changeQuarter} />
       </section>
     </div>
